@@ -9,21 +9,44 @@ import UIKit
 
 class NewTaskViewController: UIViewController {
 
+    @IBOutlet weak var taskTextView: UITextView!
+    
+    @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
+    
+//    @objc private func keyboardWillShow(with notification: Notification) {
+//
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        taskTextView.becomeFirstResponder()
     }
     
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true)
     }
-    */
+    
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+    }
+    
+}
 
+extension NewTaskViewController {
+    @objc private func keyboardWillShow(with notification: Notification) {
+        let key = UIResponder.keyboardFrameEndUserInfoKey
+        guard let keyboardFrame = notification.userInfo?[key] as? CGRect else { return }
+//        bottomConstraint.constant = keyboardFrame.height
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+} }
 }

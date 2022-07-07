@@ -12,11 +12,12 @@
         <!--Root View Controller-->
         <scene sceneID="Th5-r2-QRj">
             <objects>
-                <tableViewController id="bFY-lZ-0ev" customClass="TaskListViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bFY-lZ-0ev" customClass="TaskListViewController" customModule="NoteList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="3D2-hN-7XV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="sectionIndexBackgroundColor" systemColor="opaqueSeparatorColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Task" id="bUk-P0-xmo">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
@@ -32,7 +33,14 @@
                             <outlet property="delegate" destination="bFY-lZ-0ev" id="wkh-ze-5y3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="lJr-jn-S8s"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="lJr-jn-S8s">
+                        <barButtonItem key="leftBarButtonItem" title="Add" id="dhT-8l-T7J">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="mzF-8X-1nl" kind="presentation" identifier="newTask" id="f30-6P-xel"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37e-sD-Ku3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,13 +49,13 @@
         <!--New Task View Controller-->
         <scene sceneID="BuG-C7-g9G">
             <objects>
-                <viewController id="mzF-8X-1nl" customClass="NewTaskViewController" customModule="Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mzF-8X-1nl" customClass="NewTaskViewController" customModule="NoteList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5x6-2c-ET4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="w66-h1-lUc">
-                                <rect key="frame" x="16" y="64" width="382" height="230.5"/>
+                                <rect key="frame" x="16" y="64" width="382" height="209"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="920-Ep-ltP">
                                         <rect key="frame" x="0.0" y="0.0" width="126.5" height="30"/>
@@ -56,8 +64,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="New task..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VD0-Dw-yWY">
-                                        <rect key="frame" x="0.0" y="40" width="240" height="190.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="40" width="240" height="169"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
@@ -66,7 +74,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C6Y-Pm-V3j">
-                                <rect key="frame" x="16" y="772" width="382" height="70"/>
+                                <rect key="frame" x="16" y="752" width="382" height="70"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vv5-qb-7ik">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="32"/>
@@ -87,6 +95,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="mzF-8X-1nl" eventType="touchUpInside" id="X6d-iS-mDs"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPe-2f-pCh">
                                                 <rect key="frame" x="137" y="0.0" width="245" height="31"/>
@@ -95,6 +106,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Done"/>
+                                                <connections>
+                                                    <action selector="doneButtonPressed:" destination="mzF-8X-1nl" eventType="touchUpInside" id="hJ1-Sg-6CS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -102,7 +116,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="We0-V5-t3l"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="We0-V5-t3l" firstAttribute="bottom" secondItem="C6Y-Pm-V3j" secondAttribute="bottom" constant="20" id="VW7-BO-kDr"/>
                             <constraint firstItem="We0-V5-t3l" firstAttribute="trailing" secondItem="C6Y-Pm-V3j" secondAttribute="trailing" constant="16" id="WyA-45-tOh"/>
@@ -113,6 +127,10 @@
                             <constraint firstItem="We0-V5-t3l" firstAttribute="trailing" secondItem="w66-h1-lUc" secondAttribute="trailing" constant="16" id="wxn-bx-bd7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="prioritySegmentedControl" destination="Vv5-qb-7ik" id="5iK-A9-X74"/>
+                        <outlet property="taskTextView" destination="VD0-Dw-yWY" id="IL0-qB-CEZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9A-0m-7oF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -148,6 +166,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
