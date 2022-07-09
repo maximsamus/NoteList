@@ -15,6 +15,7 @@
 		F7A693CE2876DFFD006B75ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A693CD2876DFFD006B75ED /* Main.storyboard */; };
 		F7A693D12876E00C006B75ED /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A693CF2876E00C006B75ED /* TaskListViewController.swift */; };
 		F7A693D22876E00C006B75ED /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A693D02876E00C006B75ED /* NewTaskViewController.swift */; };
+		F7A693E128799B91006B75ED /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A693E028799B91006B75ED /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F7A693CD2876DFFD006B75ED /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F7A693CF2876E00C006B75ED /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
 		F7A693D02876E00C006B75ED /* NewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		F7A693E028799B91006B75ED /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +62,66 @@
 		F7A693B52876DFDE006B75ED /* NoteList */ = {
 			isa = PBXGroup;
 			children = (
-				F7A693B62876DFDE006B75ED /* AppDelegate.swift */,
-				F7A693B82876DFDE006B75ED /* SceneDelegate.swift */,
-				F7A693D02876E00C006B75ED /* NewTaskViewController.swift */,
-				F7A693CF2876E00C006B75ED /* TaskListViewController.swift */,
-				F7A693CD2876DFFD006B75ED /* Main.storyboard */,
-				F7A693C22876DFDF006B75ED /* Assets.xcassets */,
-				F7A693C42876DFDF006B75ED /* LaunchScreen.storyboard */,
-				F7A693C72876DFDF006B75ED /* Info.plist */,
-				F7A693BF2876DFDE006B75ED /* NoteList.xcdatamodeld */,
+				F7A693DF28799B6A006B75ED /* Services */,
+				F7A693DA28799A83006B75ED /* App */,
+				F7A693DB28799B0F006B75ED /* ViewControllers */,
+				F7A693DE28799B5A006B75ED /* Storyboards */,
+				F7A693DC28799B27006B75ED /* Data */,
+				F7A693DD28799B30006B75ED /* Resources */,
 			);
 			path = NoteList;
+			sourceTree = "<group>";
+		};
+		F7A693DA28799A83006B75ED /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693C72876DFDF006B75ED /* Info.plist */,
+				F7A693B82876DFDE006B75ED /* SceneDelegate.swift */,
+				F7A693B62876DFDE006B75ED /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F7A693DB28799B0F006B75ED /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693D02876E00C006B75ED /* NewTaskViewController.swift */,
+				F7A693CF2876E00C006B75ED /* TaskListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F7A693DC28799B27006B75ED /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693BF2876DFDE006B75ED /* NoteList.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F7A693DD28799B30006B75ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693C22876DFDF006B75ED /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F7A693DE28799B5A006B75ED /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693C42876DFDF006B75ED /* LaunchScreen.storyboard */,
+				F7A693CD2876DFFD006B75ED /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F7A693DF28799B6A006B75ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F7A693E028799B91006B75ED /* StorageManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +198,7 @@
 				F7A693B72876DFDE006B75ED /* AppDelegate.swift in Sources */,
 				F7A693B92876DFDE006B75ED /* SceneDelegate.swift in Sources */,
 				F7A693C12876DFDE006B75ED /* NoteList.xcdatamodeld in Sources */,
+				F7A693E128799B91006B75ED /* StorageManager.swift in Sources */,
 				F7A693D22876E00C006B75ED /* NewTaskViewController.swift in Sources */,
 				F7A693D12876E00C006B75ED /* TaskListViewController.swift in Sources */,
 			);
@@ -289,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASKBC27NSG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NoteList/Info.plist;
+				INFOPLIST_FILE = NoteList/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +370,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ASKBC27NSG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NoteList/Info.plist;
+				INFOPLIST_FILE = NoteList/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

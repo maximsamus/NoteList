@@ -128,6 +128,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="BPe-2f-pCh" id="3Za-4B-e0l"/>
+                        <outlet property="optionButton" destination="htg-NL-etu" id="iDk-5a-g9b"/>
                         <outlet property="prioritySegmentedControl" destination="Vv5-qb-7ik" id="5iK-A9-X74"/>
                         <outlet property="taskTextView" destination="VD0-Dw-yWY" id="IL0-qB-CEZ"/>
                     </connections>
