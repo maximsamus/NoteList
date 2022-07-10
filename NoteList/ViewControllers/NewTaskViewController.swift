@@ -14,7 +14,8 @@ class NewTaskViewController: UIViewController {
     @IBOutlet weak var optionButton: UIButton!
     @IBOutlet weak var prioritySegmentedControl: UISegmentedControl!
     
-
+    var task: Task?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,10 +25,24 @@ class NewTaskViewController: UIViewController {
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
-        taskTextView.becomeFirstResponder()
+//        taskTextView.becomeFirstResponder()
+        setupTextView()
     }
     
+    private func setupTextView() {
+        taskTextView.becomeFirstResponder()
+        if let task = task {
+            taskTextView.text = task.title
+            prioritySegmentedControl.selectedSegmentIndex = Int(task.priority)
+        } else {
+            doneButton.isHidden = true
+        }
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
@@ -35,6 +50,13 @@ class NewTaskViewController: UIViewController {
     
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        guard let title = taskTextView.text, !title.isEmpty else { return }
+        let priority = Int16(prioritySegmentedControl.selectedSegmentIndex)
+        if let task = task {
+            StorageManager.shared.edit(task: task, with: title, and: priority)
+        } else {
+            StorageManager.shared.saveTask(withTitle: title, andPriority: priority)
+        }
         dismiss(animated: true)
     }
     
@@ -61,4 +83,6 @@ extension NewTaskViewController: UITextViewDelegate {
             }
         }
     }
+    
+    
 }
